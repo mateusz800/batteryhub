@@ -17,6 +17,7 @@
 package com.hmatalonga.greenhub.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.EditTextPreference;
@@ -35,11 +36,14 @@ import com.hmatalonga.greenhub.GreenHubApp;
 import com.hmatalonga.greenhub.R;
 import com.hmatalonga.greenhub.tasks.DeleteSessionsTask;
 import com.hmatalonga.greenhub.tasks.DeleteUsagesTask;
-import com.hmatalonga.greenhub.util.Notifier;
 import com.hmatalonga.greenhub.util.SettingsUtils;
+import com.yariksoffice.lingver.Lingver;
 
 import static com.hmatalonga.greenhub.util.LogUtils.logI;
 import static com.hmatalonga.greenhub.util.LogUtils.makeLogTag;
+
+import java.util.Locale;
+import java.util.Objects;
 
 public class SettingsActivity extends BaseActivity {
 
@@ -59,9 +63,16 @@ public class SettingsActivity extends BaseActivity {
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        overridePendingTransition(0, 0);
+    }
+
     public static class SettingsFragment extends PreferenceFragment implements
             SharedPreferences.OnSharedPreferenceChangeListener {
-        public SettingsFragment() {}
+        public SettingsFragment() {
+        }
 
         @Override
         public void onCreate(Bundle savedInstanceState) {
@@ -72,7 +83,14 @@ public class SettingsActivity extends BaseActivity {
                     BuildConfig.VERSION_NAME + " (Debug)" :
                     BuildConfig.VERSION_NAME;
 
+            final Locale currentLocale = Objects.requireNonNull(
+                    SettingsUtils.fetchAppLanguage(getActivity()));
+            final String currentLanguage = currentLocale
+                    .getDisplayName(currentLocale);
+
+
             findPreference(SettingsUtils.PREF_APP_VERSION).setSummary(versionName);
+            findPreference(SettingsUtils.PREF_APP_LANGUAGE).setSummary(currentLanguage);
 
             bindPreferenceSummaryToValue(findPreference(SettingsUtils.PREF_DATA_HISTORY));
             bindPreferenceSummaryToValue(findPreference(SettingsUtils.PREF_UPLOAD_RATE));
@@ -80,6 +98,7 @@ public class SettingsActivity extends BaseActivity {
             bindPreferenceSummaryToValue(findPreference(SettingsUtils.PREF_TEMPERATURE_WARNING));
             bindPreferenceSummaryToValue(findPreference(SettingsUtils.PREF_TEMPERATURE_HIGH));
             bindPreferenceSummaryToValue(findPreference(SettingsUtils.PREF_NOTIFICATIONS_PRIORITY));
+            bindPreferenceSummaryToValue(findPreference(SettingsUtils.PREF_APP_LANGUAGE));
 
             SettingsUtils.registerOnSharedPreferenceChangeListener(getActivity(), this);
         }
@@ -115,9 +134,14 @@ public class SettingsActivity extends BaseActivity {
                     new DeleteUsagesTask().execute(interval);
                     new DeleteSessionsTask().execute(interval);
                     break;
-                case SettingsUtils.PREF_UPLOAD_RATE:
+                case SettingsUtils.PREF_APP_LANGUAGE:
                     bindPreferenceSummaryToValue(preference);
+                    updateAppLanguage();
                     break;
+                case SettingsUtils.PREF_UPLOAD_RATE:
+                case SettingsUtils.PREF_NOTIFICATIONS_PRIORITY:
+                case SettingsUtils.PREF_TEMPERATURE_RATE:
+                case SettingsUtils.PREF_TEMPERATURE_HIGH:
                 /*
                 case SettingsUtils.PREF_POWER_INDICATOR:
                     if (SettingsUtils.isPowerIndicatorShown(context)) {
@@ -137,19 +161,21 @@ public class SettingsActivity extends BaseActivity {
                 case SettingsUtils.PREF_TEMPERATURE_WARNING:
                     bindPreferenceSummaryToValue(preference);
                     break;
-                case SettingsUtils.PREF_TEMPERATURE_HIGH:
-                    bindPreferenceSummaryToValue(preference);
-                    break;
-                case SettingsUtils.PREF_TEMPERATURE_RATE:
-                    bindPreferenceSummaryToValue(preference);
-                    break;
-                case SettingsUtils.PREF_NOTIFICATIONS_PRIORITY:
-                    bindPreferenceSummaryToValue(preference);
-                    break;
                 case SettingsUtils.PREF_REMAINING_TIME:
 
                     break;
             }
+        }
+
+        private void updateAppLanguage(){
+            Locale locale = SettingsUtils.fetchAppLanguage(getActivity());
+            assert locale != null;
+            Lingver.getInstance().setLocale(getActivity(), locale.getLanguage());
+            // refresh screen
+            Intent intent = getActivity().getIntent();
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            getActivity().finish();
+            startActivity(intent);
         }
 
         private void bindPreferenceSummaryToValue(Preference preference) {

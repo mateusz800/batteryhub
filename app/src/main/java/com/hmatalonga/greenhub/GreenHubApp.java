@@ -21,6 +21,8 @@ import android.app.Application;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.SystemClock;
 
 import com.crashlytics.android.Crashlytics;
@@ -32,6 +34,7 @@ import com.hmatalonga.greenhub.tasks.DeleteSessionsTask;
 import com.hmatalonga.greenhub.tasks.DeleteUsagesTask;
 import com.hmatalonga.greenhub.util.LogUtils;
 import com.hmatalonga.greenhub.util.SettingsUtils;
+import com.yariksoffice.lingver.Lingver;
 
 import io.fabric.sdk.android.Fabric;
 import io.realm.Realm;
@@ -39,6 +42,8 @@ import io.realm.RealmConfiguration;
 
 import static com.hmatalonga.greenhub.util.LogUtils.logI;
 import static com.hmatalonga.greenhub.util.LogUtils.makeLogTag;
+
+import java.util.Locale;
 
 /**
  * GreenHubApp Application class.
@@ -50,6 +55,8 @@ public class GreenHubApp extends Application {
     private AlarmManager mAlarmManager;
 
     private PendingIntent mNotificationIntent;
+
+
 
     @Override
     public void onCreate() {
@@ -91,6 +98,18 @@ public class GreenHubApp extends Application {
             if (SettingsUtils.isPowerIndicatorShown(context)) {
                 startStatusBarUpdater();
             }
+        }
+        setLanguage();
+    }
+
+    private void setLanguage(){
+        final Locale appLocale = SettingsUtils.fetchAppLanguage(this);
+        if(appLocale == null){
+            // Leave the default language
+            SettingsUtils.saveAppLanguage(this, Locale.getDefault());
+        } else {
+            // Set language set in the settings
+            Lingver.init(this, appLocale.getLanguage());
         }
     }
 

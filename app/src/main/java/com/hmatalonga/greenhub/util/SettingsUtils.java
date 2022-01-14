@@ -26,6 +26,9 @@ import com.hmatalonga.greenhub.Config;
 import com.hmatalonga.greenhub.ui.TaskListActivity;
 import com.hmatalonga.greenhub.ui.WelcomeActivity;
 
+import java.util.Arrays;
+import java.util.Locale;
+
 /**
  * SettingsUtils.
  */
@@ -109,11 +112,14 @@ public class SettingsUtils {
      * Integer indicating which temperature critical value in celsius degrees to use.
      */
     public static final String PREF_TEMPERATURE_HIGH = "pref_temperature_high";
-
     /**
      * Boolean indicating whether to display battery alerts.
      */
     public static final String PREF_MESSAGE_ALERTS = "pref_message_alerts";
+    /**
+     * String indicating the app language
+     */
+    public static final String PREF_APP_LANGUAGE = "pref_app_language";
     /**
      * String indicating the app version.
      */
@@ -430,6 +436,34 @@ public class SettingsUtils {
     public static void markOldMeasurementUsed(final Context context, boolean newValue) {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
         sp.edit().putBoolean(PREF_USE_OLD_MEASUREMENT, newValue).apply();
+    }
+
+    /**
+     * Save current app language
+     *  @param context Context to be used to edit the {@link android.content.SharedPreferences}.
+     *  @param locale New value that will be set.
+     */
+    public static void saveAppLanguage(final Context context, Locale locale){
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+        final boolean localeSupported = Arrays.asList(Locale.getAvailableLocales()).contains(Locale.getDefault());
+        if(!localeSupported){
+            locale = new Locale("en");
+        }
+        sp.edit().putString(PREF_APP_LANGUAGE, locale.getLanguage()).apply();
+    }
+
+    /**
+     * Fetch current app language.
+     *
+     * @param context Context to be used to edit the {@link android.content.SharedPreferences}.
+     */
+    public static Locale fetchAppLanguage(final Context context) {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+        String langCode = sp.getString(PREF_APP_LANGUAGE, null);
+        if(langCode == null){
+            return null;
+        }
+        return new Locale(langCode);
     }
 
     /**

@@ -252,6 +252,7 @@
 
     <string name="pref_title_system_apps">Hide system apps</string>
 
+    <string name="pref_title_language">App Language</string>
     <string name="pref_title_version">App Version</string>
 
     <string name="pref_title_device_id">BatteryHub ID</string>
