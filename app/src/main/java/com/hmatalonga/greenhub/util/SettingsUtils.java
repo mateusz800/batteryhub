@@ -23,6 +23,7 @@ import android.preference.PreferenceManager;
 
 import com.hmatalonga.greenhub.BuildConfig;
 import com.hmatalonga.greenhub.Config;
+import com.hmatalonga.greenhub.R;
 import com.hmatalonga.greenhub.ui.TaskListActivity;
 import com.hmatalonga.greenhub.ui.WelcomeActivity;
 
@@ -445,7 +446,8 @@ public class SettingsUtils {
      */
     public static void saveAppLanguage(final Context context, Locale locale){
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
-        final boolean localeSupported = Arrays.asList(Locale.getAvailableLocales()).contains(Locale.getDefault());
+        String[] availableLanguages = context.getResources().getStringArray(R.array.language_values);
+        final boolean localeSupported = Arrays.asList(availableLanguages).contains(locale);
         if(!localeSupported){
             locale = new Locale("en");
         }
