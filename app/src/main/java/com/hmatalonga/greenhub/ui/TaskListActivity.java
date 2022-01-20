@@ -32,22 +32,23 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.hmatalonga.greenhub.Config;
 import com.hmatalonga.greenhub.R;
 import com.hmatalonga.greenhub.events.OpenTaskDetailsEvent;
@@ -76,7 +77,7 @@ public class TaskListActivity extends BaseActivity {
     private TaskAdapter mAdapter;
 
     /**
-     * The {@link android.support.v4.widget.SwipeRefreshLayout} that detects swipe gestures and
+     * The {@link SwipeRefreshLayout} that detects swipe gestures and
      * triggers callbacks in the app.
      */
     private SwipeRefreshLayout mSwipeRefreshLayout;

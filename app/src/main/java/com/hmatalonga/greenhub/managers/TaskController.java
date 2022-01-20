@@ -13,7 +13,8 @@ import android.content.pm.ServiceInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Process;
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
 
 import com.hmatalonga.greenhub.BuildConfig;
 import com.hmatalonga.greenhub.managers.sampling.UStats;

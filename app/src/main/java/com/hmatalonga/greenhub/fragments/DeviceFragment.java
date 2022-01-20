@@ -16,7 +16,8 @@
 
 package com.hmatalonga.greenhub.fragments;
 
-import android.app.Fragment;
+import static com.hmatalonga.greenhub.util.LogUtils.makeLogTag;
+
 import android.content.Context;
 import android.content.Intent;
 import android.database.DataSetObserver;
@@ -36,8 +37,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.crashlytics.android.answers.Answers;
-import com.crashlytics.android.answers.ContentViewEvent;
+import androidx.fragment.app.Fragment;
+
 import com.hmatalonga.greenhub.Config;
 import com.hmatalonga.greenhub.R;
 import com.hmatalonga.greenhub.events.RefreshEvent;
@@ -64,7 +65,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.hmatalonga.greenhub.util.LogUtils.makeLogTag;
 
 /**
  * Device Fragment.
@@ -168,10 +168,13 @@ public class DeviceFragment extends Fragment {
         btViewMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /*
                 Answers.getInstance().logContentView(new ContentViewEvent()
                         .putContentName("Enters Task Manager")
                         .putContentType("Page visit")
                         .putContentId("page-task-manager"));
+
+                 */
                 startActivity(new Intent(view.getContext(), TaskListActivity.class));
             }
         });

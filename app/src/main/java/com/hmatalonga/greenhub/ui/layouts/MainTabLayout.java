@@ -17,11 +17,12 @@
 package com.hmatalonga.greenhub.ui.layouts;
 
 import android.content.Context;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.StringRes;
-import android.support.design.widget.TabLayout;
 import android.util.AttributeSet;
 
+import androidx.annotation.DrawableRes;
+import androidx.annotation.StringRes;
+
+import com.google.android.material.tabs.TabLayout;
 import com.hmatalonga.greenhub.R;
 
 /**

@@ -16,6 +16,9 @@
 
 package com.hmatalonga.greenhub.ui;
 
+
+import static com.hmatalonga.greenhub.util.LogUtils.makeLogTag;
+
 import android.Manifest;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -30,20 +33,19 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.crashlytics.android.answers.Answers;
-import com.crashlytics.android.answers.ContentViewEvent;
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.tabs.TabLayout;
 import com.hmatalonga.greenhub.Config;
 import com.hmatalonga.greenhub.GreenHubApp;
 import com.hmatalonga.greenhub.R;
@@ -66,7 +68,6 @@ import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
-import static com.hmatalonga.greenhub.util.LogUtils.makeLogTag;
 
 public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClickListener,
         ActivityCompat.OnRequestPermissionsResultCallback, SensorEventListener {
@@ -160,17 +161,21 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
                 }
                 return true;
             case R.id.action_settings:
+                /*
                 Answers.getInstance().logContentView(new ContentViewEvent()
                         .putContentName("Enters settings page")
                         .putContentType("Page visit")
                         .putContentId("page-settings"));
+                 */
                 startActivity(new Intent(this, SettingsActivity.class));
                 return true;
             case R.id.action_rating:
+                /*
                 Answers.getInstance().logContentView(new ContentViewEvent()
                         .putContentName("Enters Google Play Store to rate")
                         .putContentType("Page visit")
                         .putContentId("page-store"));
+                 */
                 try {
                     startActivity(new Intent(Intent.ACTION_VIEW,
                             Uri.parse("market://details?id=com.hmatalonga.greenhub")));
@@ -238,7 +243,7 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
         mViewPager = findViewById(R.id.viewpager);
         mViewPager.setOffscreenPageLimit(TabAdapter.NUM_TABS - 1);
 
-        final TabAdapter tabAdapter = new TabAdapter(getFragmentManager());
+        final TabAdapter tabAdapter = new TabAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(tabAdapter);
 
         MainTabLayout tabLayout = findViewById(R.id.tab_layout);
@@ -312,11 +317,12 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
                 if (tab.getPosition() == TabAdapter.TAB_CHARTS) {
                     EventBus.getDefault().post(new RefreshChartEvent());
                 }
-
+                /*
                 Answers.getInstance().logContentView(new ContentViewEvent()
                         .putContentName("Visits Tab " + tabAdapter.getTabName(tab.getPosition()))
                         .putContentType("Tab navigation")
                         .putContentId("page-tab"));
+                 */
             }
 
             @Override

@@ -16,12 +16,14 @@
 
 package com.hmatalonga.greenhub.ui.adapters;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
+
 import android.os.Parcelable;
-import android.support.v13.app.FragmentStatePagerAdapter;
 import android.util.SparseArray;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.hmatalonga.greenhub.fragments.DeviceFragment;
 import com.hmatalonga.greenhub.fragments.HomeFragment;

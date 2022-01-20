@@ -1,6 +1,8 @@
 package com.hmatalonga.greenhub.managers.storage;
 
-import android.support.annotation.NonNull;
+
+
+import static com.hmatalonga.greenhub.util.LogUtils.makeLogTag;
 
 import com.hmatalonga.greenhub.util.LogUtils;
 
@@ -9,7 +11,8 @@ import io.realm.RealmMigration;
 import io.realm.RealmObjectSchema;
 import io.realm.RealmSchema;
 
-import static com.hmatalonga.greenhub.util.LogUtils.makeLogTag;
+
+import androidx.annotation.NonNull;
 
 /**
  * Created by hugo on 17-10-2017.

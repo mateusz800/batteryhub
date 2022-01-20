@@ -16,16 +16,16 @@
 
 package com.hmatalonga.greenhub;
 
+import static com.hmatalonga.greenhub.util.LogUtils.logI;
+import static com.hmatalonga.greenhub.util.LogUtils.makeLogTag;
+
 import android.app.AlarmManager;
 import android.app.Application;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.SystemClock;
 
-import com.crashlytics.android.Crashlytics;
 import com.hmatalonga.greenhub.managers.sampling.BatteryService;
 import com.hmatalonga.greenhub.managers.sampling.DataEstimator;
 import com.hmatalonga.greenhub.managers.storage.GreenHubDbMigration;
@@ -36,12 +36,9 @@ import com.hmatalonga.greenhub.util.LogUtils;
 import com.hmatalonga.greenhub.util.SettingsUtils;
 import com.yariksoffice.lingver.Lingver;
 
-import io.fabric.sdk.android.Fabric;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
-import static com.hmatalonga.greenhub.util.LogUtils.logI;
-import static com.hmatalonga.greenhub.util.LogUtils.makeLogTag;
 
 import java.util.Locale;
 
@@ -69,8 +66,6 @@ public class GreenHubApp extends Application {
 
         logI(TAG, "onCreate() called");
 
-        // Init crash reports
-        Fabric.with(this, new Crashlytics());
 
         // Database init
         Realm.init(this);

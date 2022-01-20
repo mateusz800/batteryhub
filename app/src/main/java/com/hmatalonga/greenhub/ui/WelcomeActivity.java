@@ -21,8 +21,6 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 
 import com.hmatalonga.greenhub.R;
@@ -35,6 +33,9 @@ import java.util.Collections;
 import java.util.List;
 
 import static com.hmatalonga.greenhub.util.LogUtils.makeLogTag;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Terms of Service activity activated via

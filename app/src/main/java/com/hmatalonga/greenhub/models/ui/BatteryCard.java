@@ -17,7 +17,8 @@
 package com.hmatalonga.greenhub.models.ui;
 
 import android.graphics.Color;
-import android.support.annotation.DrawableRes;
+
+import androidx.annotation.DrawableRes;
 
 /**
  * Device Resource Card class model.

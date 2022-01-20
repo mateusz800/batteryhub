@@ -18,7 +18,8 @@ package com.hmatalonga.greenhub.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Entry Point Activity with a splash screen logo.

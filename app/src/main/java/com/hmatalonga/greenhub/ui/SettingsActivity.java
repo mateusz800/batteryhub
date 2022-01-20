@@ -16,6 +16,9 @@
 
 package com.hmatalonga.greenhub.ui;
 
+import static com.hmatalonga.greenhub.util.LogUtils.logI;
+import static com.hmatalonga.greenhub.util.LogUtils.makeLogTag;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -25,12 +28,11 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
-import android.support.annotation.Nullable;
-import android.support.v7.app.ActionBar;
-import android.support.v7.widget.Toolbar;
 
-import com.crashlytics.android.answers.Answers;
-import com.crashlytics.android.answers.CustomEvent;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.Toolbar;
+
 import com.hmatalonga.greenhub.BuildConfig;
 import com.hmatalonga.greenhub.GreenHubApp;
 import com.hmatalonga.greenhub.R;
@@ -39,8 +41,6 @@ import com.hmatalonga.greenhub.tasks.DeleteUsagesTask;
 import com.hmatalonga.greenhub.util.SettingsUtils;
 import com.yariksoffice.lingver.Lingver;
 
-import static com.hmatalonga.greenhub.util.LogUtils.logI;
-import static com.hmatalonga.greenhub.util.LogUtils.makeLogTag;
 
 import java.util.Locale;
 import java.util.Objects;
@@ -121,11 +121,13 @@ public class SettingsActivity extends BaseActivity {
                     logI(TAG, "Restarting GreenHub Service because of preference changes");
                     app.stopGreenHubService();
                     app.startGreenHubService();
+                    /*
                     Answers.getInstance().logCustom(new CustomEvent("Preference Change")
                             .putCustomAttribute(
                                     "Sampling on Screen",
                                     String.valueOf(SettingsUtils.isSamplingScreenOn(context))
                             ));
+                     */
                     break;
                 case SettingsUtils.PREF_DATA_HISTORY:
                     bindPreferenceSummaryToValue(preference);
