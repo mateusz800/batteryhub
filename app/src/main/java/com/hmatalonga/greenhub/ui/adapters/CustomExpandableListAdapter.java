@@ -15,9 +15,9 @@ import com.hmatalonga.greenhub.R;
 
 public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
 
-    private LayoutInflater mLayoutInflater;
-    private List<String> mExpandableListTitle;
-    private Map<String, List<String>> mExpandableListDetail;
+    private final LayoutInflater mLayoutInflater;
+    private final List<String> mExpandableListTitle;
+    private final Map<String, List<String>> mExpandableListDetail;
 
     public CustomExpandableListAdapter(Context context, List<String> expandableListTitle,
                                        Map<String, List<String>> expandableListDetail) {
@@ -45,7 +45,7 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
         if (convertView == null) {
             convertView = mLayoutInflater.inflate(R.layout.sensors_list_item, null);
         }
-        TextView expandedListTextView = (TextView) convertView
+        TextView expandedListTextView = convertView
                 .findViewById(R.id.expandedListItem);
         expandedListTextView.setText(expandedListText);
         return convertView;
@@ -79,7 +79,7 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
         if (convertView == null) {
             convertView = mLayoutInflater.inflate(R.layout.sensors_list_group, null);
         }
-        TextView listTitleTextView = (TextView) convertView
+        TextView listTitleTextView = convertView
                 .findViewById(R.id.listTitle);
         listTitleTextView.setTypeface(null, Typeface.BOLD);
         listTitleTextView.setText(listTitle);

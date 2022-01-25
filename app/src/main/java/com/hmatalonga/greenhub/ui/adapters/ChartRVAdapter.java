@@ -56,7 +56,7 @@ public class ChartRVAdapter extends RecyclerView.Adapter<ChartRVAdapter.Dashboar
 
     private int mInterval;
 
-    private Context mContext;
+    private final Context mContext;
 
     static class DashboardViewHolder extends RecyclerView.ViewHolder {
 

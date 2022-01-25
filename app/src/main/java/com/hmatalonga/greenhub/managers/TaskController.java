@@ -35,9 +35,9 @@ import java.util.List;
  */
 public class TaskController {
 
-    private Context mContext;
+    private final Context mContext;
 
-    private PackageManager mPackageManager;
+    private final PackageManager mPackageManager;
 
     public TaskController(@NonNull final Context context) {
         mPackageManager = context.getPackageManager();

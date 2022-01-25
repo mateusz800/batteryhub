@@ -16,6 +16,7 @@
 
 package com.hmatalonga.greenhub;
 
+
 import static com.hmatalonga.greenhub.util.LogUtils.logI;
 import static com.hmatalonga.greenhub.util.LogUtils.makeLogTag;
 
@@ -36,6 +37,7 @@ import com.hmatalonga.greenhub.util.LogUtils;
 import com.hmatalonga.greenhub.util.SettingsUtils;
 import com.yariksoffice.lingver.Lingver;
 
+import dagger.hilt.android.HiltAndroidApp;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
@@ -45,6 +47,7 @@ import java.util.Locale;
 /**
  * GreenHubApp Application class.
  */
+@HiltAndroidApp
 public class GreenHubApp extends Application {
 
     private static final String TAG = makeLogTag(GreenHubApp.class);

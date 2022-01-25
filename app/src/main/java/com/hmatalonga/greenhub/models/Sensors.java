@@ -38,7 +38,7 @@ import static com.hmatalonga.greenhub.util.LogUtils.makeLogTag;
 public class Sensors {
     private static final String TAG = makeLogTag(Sensors.class);
     private static final int SDK_VERSION = Build.VERSION.SDK_INT;
-    private static Map<String, SensorDetails> sensorsMap = new HashMap<>();;
+    private static Map<String, SensorDetails> sensorsMap = new HashMap<>();
     private static SensorManager manager;
 
     /**

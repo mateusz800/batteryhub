@@ -27,6 +27,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.hmatalonga.greenhub.R;
+import com.hmatalonga.greenhub.ui.welcome.WelcomeActivity;
+import com.hmatalonga.greenhub.util.SettingsUtils;
 
 /**
  * A base activity that handles common functionality in the app.
@@ -41,7 +43,8 @@ public abstract class BaseActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
 
         // Check if the EULA has been accepted; if not, show it.
-        if (WelcomeActivity.shouldDisplay(this)) {
+        Boolean accepted = SettingsUtils.isTosAccepted(this);
+        if (!accepted) {
             Intent intent = new Intent(this, WelcomeActivity.class);
             startActivity(intent);
             finish();

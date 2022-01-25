@@ -38,18 +38,18 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
     private List<Task> mItems;
 
-    private List<Task> mItemsPendingRemoval;
+    private final List<Task> mItemsPendingRemoval;
 
     // is undo on, you can turn it on from the toolbar menu
     private boolean mUndoOn;
 
     // hanlder for running delayed runnables
-    private Handler mHandler;
+    private final Handler mHandler;
 
     // map of mItems to pending runnables, so we can cancel a removal
-    private HashMap<Task, Runnable> mPendingRunnables = new HashMap<>();
+    private final HashMap<Task, Runnable> mPendingRunnables = new HashMap<>();
 
-    private TaskController mTaskController;
+    private final TaskController mTaskController;
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
@@ -242,9 +242,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
     public void remove(int position) {
         Task item = mItems.get(position);
-        if (mItemsPendingRemoval.contains(item)) {
-            mItemsPendingRemoval.remove(item);
-        }
+		mItemsPendingRemoval.remove(item);
         if (mItems.contains(item)) {
             mItems.remove(position);
             notifyItemRemoved(position);

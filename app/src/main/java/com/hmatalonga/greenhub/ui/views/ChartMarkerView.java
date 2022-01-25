@@ -32,7 +32,7 @@ import com.hmatalonga.greenhub.util.StringHelper;
  */
 public class ChartMarkerView extends MarkerView {
 
-    private TextView mContent;
+    private final TextView mContent;
     private MPPointF mOffset;
     private int mType;
 

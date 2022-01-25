@@ -49,9 +49,9 @@ import static com.hmatalonga.greenhub.util.LogUtils.makeLogTag;
 public class RegisterDeviceHandler {
     private static final String TAG = makeLogTag(RegisterDeviceHandler.class);
 
-    private GreenHubAPIService mService;
+    private final GreenHubAPIService mService;
 
-    private Context mContext;
+    private final Context mContext;
 
     public RegisterDeviceHandler(final Context context) {
         mContext = context;

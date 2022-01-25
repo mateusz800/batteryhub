@@ -57,6 +57,7 @@ import com.hmatalonga.greenhub.managers.TaskController;
 import com.hmatalonga.greenhub.models.Memory;
 import com.hmatalonga.greenhub.models.ui.Task;
 import com.hmatalonga.greenhub.ui.adapters.TaskAdapter;
+import com.hmatalonga.greenhub.ui.welcome.WelcomeActivity;
 import com.hmatalonga.greenhub.util.SettingsUtils;
 
 import org.greenrobot.eventbus.EventBus;

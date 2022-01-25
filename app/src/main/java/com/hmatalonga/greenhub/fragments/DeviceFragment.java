@@ -362,7 +362,7 @@ public class DeviceFragment extends Fragment {
         textView.setVisibility(value ? View.VISIBLE : View.GONE);
     }
 
-    private Runnable mRunnable = new Runnable() {
+    private final Runnable mRunnable = new Runnable() {
         @Override
         public void run() {
             // 0 total, 1 free, 2 used

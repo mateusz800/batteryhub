@@ -73,9 +73,9 @@ public class CommunicationManager {
 
     public static int uploadAttempts = 0;
 
-    private Context mContext;
+    private final Context mContext;
 
-    private GreenHubAPIService mService;
+    private final GreenHubAPIService mService;
 
     private Iterator<Integer> mCollection;
 

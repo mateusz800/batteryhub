@@ -26,11 +26,6 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/Theme.GreenHub">
-        <activity
-            android:name=".fragments.MainActivity"
-            android:exported="false"
-            android:label="@string/title_activity_main"
-            android:theme="@style/Theme.GreenHub.NoActionBar" />
 
         <meta-data
             android:name="AA_DB_NAME"
@@ -93,9 +88,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.InboxActivity" />
         </activity>
-        <activity
-            android:name=".ui.WelcomeActivity"
-            android:theme="@style/Theme.GreenHub.Welcome" />
+        <activity android:name=".ui.welcome.WelcomeActivity" />
 
         <service
             android:name=".managers.sampling.DataEstimatorService"

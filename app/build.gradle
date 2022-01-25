@@ -5,6 +5,7 @@ apply plugin: 'realm-android'
 //apply plugin: 'com.google.firebase.crashlytics'
 apply from: 'checkstyle.gradle'
 //apply plugin: 'com.google.gms.google-services'
+apply plugin: "dagger.hilt.android.plugin"
 
 
 // Check if can build a release config
@@ -20,6 +21,7 @@ if (canBuildRelease) {
 }
 
 android {
+
     compileSdkVersion project.compileSdkVersion.toInteger()
     signingConfigs {
         debug {
@@ -44,7 +46,7 @@ android {
         targetSdkVersion project.targetSdkVersion.toInteger()
         versionCode project.versionCode.toInteger()
         versionName project.versionName
-        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         signingConfig signingConfigs.debug
         vectorDrawables {
             useSupportLibrary true
@@ -102,24 +104,21 @@ dependencies {
     implementation 'com.google.android.material:material:1.5.0'
     implementation "androidx.compose.ui:ui:$compose_version"
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
+    implementation "androidx.compose.runtime:runtime-livedata:$compose_version"
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.0'
-    //implementation 'com.google.firebase:firebase-crashlytics:17.2.1'
-    //implementation 'com.google.firebase:firebase-analytics:17.5.0'
-    // Dependencies for android tests which reside in the "androidTest" src folder.
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    androidTestImplementation 'com.google.code.findbugs:jsr305:3.0.2'
-    // Dependencies for unit tests which reside in the "tests" src folder.
-    testImplementation 'junit:junit:4.12'
+    implementation 'androidx.test.ext:junit-ktx:1.1.3'
+
     testImplementation 'org.mockito:mockito-core:4.0.0'
+    androidTestImplementation "com.github.stefanbirkner:system-lambda:1.2.1"
+    testImplementation 'org.robolectric:robolectric:4.6'
+
     // Android support libraries.
-    implementation "com.android.support:appcompat-v7:${androidSupportLibVersion}"
-    implementation "com.android.support:design:${androidSupportLibVersion}"
-    implementation "com.android.support:support-v4:${androidSupportLibVersion}"
-    implementation "com.android.support:support-v13:${androidSupportLibVersion}"
-    implementation "com.android.support:cardview-v7:${androidSupportLibVersion}"
-    implementation "com.android.support:recyclerview-v7:${androidSupportLibVersion}"
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.legacy:legacy-support-v13:1.0.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
     // JSON utility library.
     implementation 'com.google.code.gson:gson:2.8.5'
     // Retrofit library for networking operations
@@ -146,8 +145,19 @@ dependencies {
     implementation 'androidx.compose.ui:ui-tooling:1.0.5'
     // Integration with ViewModels
     implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.4.0'
-    // UI Tests
-    androidTestImplementation 'androidx.compose.ui:ui-test-junit4:1.0.5'
+
+
+
+
+    // dependency injection
+    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0-rc01'
+    implementation("com.google.dagger:hilt-android:2.38.1")
+    implementation 'androidx.compose.ui:ui-test-junit4:1.0.5'
+    kapt("com.google.dagger:hilt-android-compiler:2.38.1")
+
+
+
+
 }
 repositories {
     mavenCentral()

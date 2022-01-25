@@ -561,7 +561,7 @@ public final class Inspector {
         details.capacity = Battery.getBatteryDesignCapacity(context);
         details.chargeCounter = Battery.getBatteryChargeCounter(context);
         details.currentAverage = Battery.getBatteryCurrentAverage(context);
-        details.currentNow = (int) Battery.getBatteryCurrentNow(context);
+        details.currentNow = Battery.getBatteryCurrentNow(context);
         details.energyCounter = Battery.getBatteryEnergyCounter(context);
         details.remainingCapacity = Battery.getBatteryRemainingCapacity(context);
 

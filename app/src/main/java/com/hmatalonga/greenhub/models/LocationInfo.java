@@ -108,7 +108,7 @@ public class LocationInfo {
                 latitude = location.getLatitude();
                 longitude = location.getLongitude();
 
-                return String.valueOf(latitude) + "," + String.valueOf(longitude);
+                return latitude + "," + longitude;
             } catch (SecurityException e) {
                 if (Config.DEBUG) {
                     logD("SamplingLibrary", "Failed getting coarse location!");

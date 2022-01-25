@@ -25,7 +25,7 @@ import java.util.TreeSet;
  */
 public class Task {
 
-    private int mUid;
+    private final int mUid;
 
     private String mName;
 
@@ -35,7 +35,7 @@ public class Task {
 
     private PackageInfo mPackageInfo;
 
-    private TreeSet<Integer> mProcesses;
+    private final TreeSet<Integer> mProcesses;
 
     private boolean mIsChecked;
 

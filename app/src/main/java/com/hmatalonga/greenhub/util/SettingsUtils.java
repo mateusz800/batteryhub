@@ -25,7 +25,6 @@ import com.hmatalonga.greenhub.BuildConfig;
 import com.hmatalonga.greenhub.Config;
 import com.hmatalonga.greenhub.R;
 import com.hmatalonga.greenhub.ui.TaskListActivity;
-import com.hmatalonga.greenhub.ui.WelcomeActivity;
 
 import java.util.Arrays;
 import java.util.Locale;

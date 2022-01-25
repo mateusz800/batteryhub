@@ -31,7 +31,7 @@ public class FontManager {
     public static final String ROOT = "fonts/",
             FONTAWESOME = ROOT + "fontawesome-webfont.ttf";
 
-    private static Hashtable<String, Typeface> fontCache = new Hashtable<>();
+    private static final Hashtable<String, Typeface> fontCache = new Hashtable<>();
 
     public static Typeface getTypeface(Context context, String name) {
         Typeface tf = fontCache.get(name);

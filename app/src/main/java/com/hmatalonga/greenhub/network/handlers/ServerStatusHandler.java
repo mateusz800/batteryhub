@@ -39,7 +39,7 @@ import static com.hmatalonga.greenhub.util.LogUtils.makeLogTag;
 public class ServerStatusHandler {
     private static final String TAG = makeLogTag(ServerStatusHandler.class);
 
-    private GreenHubStatusService mService;
+    private final GreenHubStatusService mService;
 
     public ServerStatusHandler() {
         Retrofit retrofit = new Retrofit.Builder()

@@ -170,7 +170,7 @@ public class Storage {
                 total = stats.getTotalBytes() / MB;
                 return new long[]{free, total};
             } else {
-                blockSize = (long) stats.getBlockSize();
+                blockSize = stats.getBlockSize();
                 free = ((long) stats.getAvailableBlocks() * blockSize) / MB;
                 total = ((long) stats.getBlockCount() * blockSize) / MB;
                 if (free < 0 || total < 0) return new long[]{};

@@ -368,7 +368,7 @@ public class HomeFragment extends Fragment {
         mBatteryCurrentNow.setText(value);
     }
 
-    private Runnable mRunnable = new Runnable() {
+    private final Runnable mRunnable = new Runnable() {
         @Override
         public void run() {
             double now = Battery.getBatteryCurrentNowInAmperes(mContext);

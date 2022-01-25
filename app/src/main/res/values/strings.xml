@@ -16,7 +16,7 @@
 
 <resources>
     <string name="app_name">BatteryHub</string>
-
+    <string name="continue_label">Continue</string>
     <string name="accept">Accept</string>
     <string name="decline">Decline</string>
     <string name="ok">OK</string>
@@ -27,10 +27,11 @@
     <string name="now">Now</string>
 
     <!-- Short mText welcoming the user to the application -->
-    <string name="welcome_to_greenhub_app">Welcome to the BatteryHub app!</string>
-
+    <string name="welcome_to_greenhub_app">Welcome!</string>
+    <string name="terms_of_service">Terms of Service</string>
+    <string name="tos_content"><h1>Title</h1><h2>Subtitle</h2></string>
     <!-- Medium-length welcome mText indicating the subsequent mText is important legal information -->
-    <string name="welcome_text">Before we begin, here is some important legal information regarding your use of this app. This will only take a minute!</string>
+    <string name="welcome_text">Before we begin, you have to read and accept our terms of service. This will only take a minute!</string>
 
     <string name="action_inbox">Inbox</string>
     <string name="action_summary">Summary</string>

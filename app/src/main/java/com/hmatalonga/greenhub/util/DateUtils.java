@@ -37,7 +37,7 @@ public class DateUtils {
 
     private static final String DATE_FORMAT = "dd-MM HH:mm";
 
-    private static SimpleDateFormat sSimpleDateFormat =
+    private static final SimpleDateFormat sSimpleDateFormat =
             new SimpleDateFormat(DATE_FORMAT, Locale.getDefault());
 
     public static String convertMilliSecondsToFormattedDate(long milliSeconds) {
